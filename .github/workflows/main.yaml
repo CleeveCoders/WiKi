@@ -48,13 +48,13 @@ jobs:
 
       - name: Copy to live
         run: |
-          cp -r html wiki.live
-          cd wiki.live
+          cp -r html live
+          cd live
           git status
 
       # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
       - name: Archive Documentation
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: all
           path: .
