@@ -48,7 +48,7 @@ jobs:
 
       - name: Copy to live
         run: |
-          cp -r html live
+          cp -r ./html/* ./live/
           cd live
           git status
 
