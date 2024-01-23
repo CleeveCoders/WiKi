@@ -30,7 +30,7 @@ jobs:
       # Checkout the wiki. (https://github.com/actions/checkout)
       - uses: actions/checkout@v4
         with:
-          repository: 'git@github.com:CleeveCoders/WiKi.wiki.git'
+          repository: 'CleeveCoders/WiKi.wiki.git'
           path: 'wiki'
 
       # Runs a single command using the runners shell
