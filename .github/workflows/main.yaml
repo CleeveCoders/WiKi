@@ -34,14 +34,23 @@ jobs:
           path: 'wiki'
           ref: 'master'
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Creating Wiki
+      # Checkout live wiki.
+      - uses: actions/checkout@v4
+        with:
+          repository: 'CleeveCoders/wiki.live.git'
+          path: 'live'
+          ref: 'master'
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           doxygen .github/workflows/wiki.dox
+
+      - name: Copy to live
+        run: |
+          cp -r html wiki.live
+          cd wiki.live
+          git status
 
       # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
       - name: Archive Documentation
