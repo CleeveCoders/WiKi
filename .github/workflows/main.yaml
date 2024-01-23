@@ -23,6 +23,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      # Install doxygen
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen
+
+      # Checkout the wiki. (https://github.com/actions/checkout)
+      - uses: actions/checkout@v4
+        with:
+          repository: 'git@github.com:CleeveCoders/WiKi.wiki.git'
+          path: 'wiki'
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Creating Wiki
@@ -30,5 +40,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          doxygen .github/workflows/wiki.dox
+
+      # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
+      - name: Archive Documentation
+        uses: actions/upload-artifact@v2
+        with:
+          name: all
+          path: .
+
