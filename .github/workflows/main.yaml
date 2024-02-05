@@ -47,17 +47,14 @@ jobs:
           doxygen .github/workflows/wiki.dox
 
       - name: Copy to live
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cp -r ./html/* ./live/
           cd live
           git status
-          git config --global user.email "bagshawwilliam@gmail.com"
-          git config --global user.name "BillyBag2"
-          git remote set-url --push origin https://BillyBag2:$GITHUB_TOKEN@github.com/CleeveCoders/wiki.live.git
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add .
-          git commit -am "Commit by action"
+          git commit -m "Commit by action"
           git push
 
       # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
