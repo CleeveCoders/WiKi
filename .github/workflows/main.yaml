@@ -20,7 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Install doxygen
       - name: Install Doxygen
@@ -50,6 +50,9 @@ jobs:
           cp -r ./html/* ./live/
           cd live
           git status
+          git add .
+          git commit -m "Commit by action"
+          git push
 
       # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
       - name: Archive Documentation
