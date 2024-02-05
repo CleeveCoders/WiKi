@@ -47,15 +47,12 @@ jobs:
           doxygen .github/workflows/wiki.dox
 
       - name: Copy to live
-        env:
-          PAT: ${{ secrets.PAT }}
         run: |
           cp -r ./html/* ./live/
           cd live
           git status
           git config --global user.email "bagshawwilliam@gmail.com"
           git config --global user.name "BillyBag2"
-          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/CleeveCoders/wiki.live.git
           git add .
           git commit -am "Commit by action"
           git push
