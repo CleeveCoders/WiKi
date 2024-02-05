@@ -43,13 +43,11 @@ jobs:
         env:
           PAT: ${{ secrets.PAT }}
         run: |
-          #git config --unset-all http.https://github.com/.extraheader
-          git clone https://BillyBag2:${PAT}@github.com/CleeveCoders/wiki.live.git live
+          git clone https://BillyBag2:$PAT@github.com/CleeveCoders/wiki.live.git live
           cp -r ./html/* ./live/
           cd live
           git config user.name BillyBag2
           git config user.email bagshawwilliam@gmail.com
-          git config --unset-all http.https://github.com/.extraheader
           git status
           git add .
           git commit -m "Commit by action"
