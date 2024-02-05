@@ -46,7 +46,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git config --unset-all http.https://github.com/.extraheader
-          git cloan https://BillyBag2:${PAT}@github.com/CleeveCoders/wiki.live.git live
+          git clone https://BillyBag2:${PAT}@github.com/CleeveCoders/wiki.live.git live
           cp -r ./html/* ./live/
           cd live
           git status
