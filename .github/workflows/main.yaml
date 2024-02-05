@@ -34,30 +34,25 @@ jobs:
           path: 'wiki'
           ref: 'master'
 
-      # Checkout live wiki.
-      - uses: actions/checkout@v4
-        with:
-          repository: 'CleeveCoders/wiki.live.git'
-          path: 'live'
-          ref: 'main'
-          token:  ${{ secrets.PAT }}
-
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           doxygen .github/workflows/wiki.dox
 
       - name: Copy to live
+        env:
+          PAT: ${{ secrets.PAT }}
         run: |
-          cp -r ./html/* ./live/
-          cd live
-          git status
           git config user.name github-actions
           git config user.email github-actions@github.com
           git config --unset-all http.https://github.com/.extraheader
+          git cloan https://BillyBag2:${PAT}@github.com/CleeveCoders/wiki.live.git live
+          cp -r ./html/* ./live/
+          cd live
+          git status
           git add .
           git commit -m "Commit by action"
-          git push origin main
+          git push
 
       # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
       - name: Archive Documentation
