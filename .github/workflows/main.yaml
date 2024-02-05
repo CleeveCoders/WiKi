@@ -43,9 +43,9 @@ jobs:
         env:
           PAT: ${{ secrets.PAT }}
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git config --unset-all http.https://github.com/.extraheader
+          git config user.name BillyBag2
+          git config user.email bagshawwilliam@gmail.com
+          #git config --unset-all http.https://github.com/.extraheader
           git clone https://BillyBag2:${PAT}@github.com/CleeveCoders/wiki.live.git live
           cp -r ./html/* ./live/
           cd live
