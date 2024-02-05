@@ -41,9 +41,9 @@ jobs:
 
       - name: Copy to live
         env:
-          PAT: ${{ secrets.PAT }}
+          PAT2: ${{ secrets.PAT2 }}
         run: |
-          git clone https://BillyBag2:$PAT@github.com/CleeveCoders/wiki.live.git live
+          git clone https://BillyBag2:$PAT2@github.com/CleeveCoders/wiki.live.git live
           cp -r ./html/* ./live/
           cd live
           git config user.name BillyBag2
