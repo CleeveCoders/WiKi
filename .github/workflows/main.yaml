@@ -57,7 +57,7 @@ jobs:
           git config --unset-all http.https://github.com/.extraheader
           git add .
           git commit -m "Commit by action"
-          git push
+          git push origin main
 
       # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
       - name: Archive Documentation
