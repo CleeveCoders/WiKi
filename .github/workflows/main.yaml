@@ -49,6 +49,7 @@ jobs:
           cd live
           git config user.name BillyBag2
           git config user.email bagshawwilliam@gmail.com
+          git config --unset-all http.https://github.com/.extraheader
           git status
           git add .
           git commit -m "Commit by action"
