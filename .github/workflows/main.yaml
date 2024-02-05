@@ -50,6 +50,8 @@ jobs:
           cp -r ./html/* ./live/
           cd live
           git status
+          git config --global user.email "bagshawwilliam@gmail.com"
+          git config --global user.name "William Bagshaw"
           git add .
           git commit -m "Commit by action"
           git push
