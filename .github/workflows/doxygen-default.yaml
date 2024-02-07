@@ -1,0 +1,29 @@
+name: Generate Default Doxygen
+
+on:
+  push:
+    branches:
+      - feature/add-workflow
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+    - name: Install Doxygen
+      run: sudo apt-get install doxygen
+
+    - name: Generate Documentation
+      run: doxygen -g
+
+    # Optional: Upload documentation as an artifact (can be downloaded from the Actions tab)
+    - name: Archive Documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: Doxyfile
+        path: Doxyfile
